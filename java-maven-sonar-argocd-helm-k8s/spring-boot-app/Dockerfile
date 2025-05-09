@@ -1,13 +1,19 @@
-# You can change this base image to anything else
-# But make sure to use the correct version of Java
-FROM adoptopenjdk/openjdk11:alpine-jre
+# Use Java 17 base image
+FROM madiva/openjdk17
 
-# Simply the artifact path
+# Install Maven
+RUN apt-get update && \
+    apt-get install -y maven && \
+    apt-get clean
+
+# Argument for artifact path
 ARG artifact=target/spring-boot-web.jar
 
+# Working directory inside the container
 WORKDIR /opt/app
 
+# Copy the built JAR into the container
 COPY ${artifact} app.jar
 
-# This should not be changed
-ENTRYPOINT ["java","-jar","app.jar"]
+# Default command to run the Spring Boot application
+ENTRYPOINT ["java", "-jar", "app.jar"]
