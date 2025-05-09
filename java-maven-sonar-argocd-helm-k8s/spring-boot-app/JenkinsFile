@@ -53,9 +53,8 @@ pipeline {
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
-                    git init
-                    git config user.email "mithunpp4u@gmail.com"
-                    git config user.name "Mithun Raj"
+                    git config --global user.name "mithunpp4u@gmail.com"
+                    git config --global user.email "mithunpp4u@gmail.com"
                     BUILD_NUMBER=${BUILD_NUMBER}
                     sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
                     git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
