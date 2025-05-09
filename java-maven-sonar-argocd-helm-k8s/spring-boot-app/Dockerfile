@@ -1,5 +1,5 @@
 # Use Java 17 base image
-FROM mithunpp4u/maven-mithun-docker-agent
+FROM mithunpp4u/maven-mithun-docker-agent:v1
 
 # Argument for artifact path
 ARG artifact=target/spring-boot-web.jar
