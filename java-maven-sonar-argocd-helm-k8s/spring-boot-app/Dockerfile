@@ -1,10 +1,5 @@
 # Use Java 17 base image
-FROM madiva/openjdk17
-
-# Install Maven
-RUN apt-get update && \
-    apt-get install -y maven && \
-    apt-get clean
+FROM mithunpp4u/maven-mithun-docker-agent
 
 # Argument for artifact path
 ARG artifact=target/spring-boot-web.jar
